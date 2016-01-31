@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -374,6 +375,9 @@ public class HomeActivity extends FragmentActivity {
                             valorGanhos = new GanhosDAO(HomeActivity.this).getTotalGanhosMes(gc.getTime());
                             valorGastos = new GastosDAO(HomeActivity.this).getTotalGastosMes(gc.getTime());
 
+                            Log.i("Script","Valor Ganhos: " + valorGanhos);
+                            Log.i("Script","Valor Gastos: " + valorGastos);
+
                             Ganho ganho = new Ganho();
                             Gasto gasto = new Gasto();
                             FormaPagamento formaPagamento;
@@ -387,9 +391,10 @@ public class HomeActivity extends FragmentActivity {
                             categoriaGanho = new CategoriaGanhosDAO(HomeActivity.this).getCategoriaOutros();
                             fundoCaixa = fundoCaixaDao.getFundoCaixaMes(gc.getTime());
 
+
                             if (valorGanhos.compareTo(valorGastos) > 0){
 
-                                if (fundoCaixa.getValorFundo() != null){
+                                if (fundoCaixa.getValorFundo() == null){
                                     categoriaGanho = new CategoriaGanhosDAO(HomeActivity.this).getCategoriaOutros();
                                     ganho.setValor(valorGanhos.subtract(valorGastos));
                                     ganho.setDataPagamento(DateUtil.getDataHoje());
@@ -397,11 +402,15 @@ public class HomeActivity extends FragmentActivity {
                                     ganho.setComentarios("Ganhos do mês anterior");
                                     ganho.setCategoria((int) categoriaGanho.getId());
                                     ganhosDAO.inserir(ganho);
+
+                                    fundoCaixa.setDataIclusao(gc.getTime());
+                                    fundoCaixa.setValorFundo(valorGanhos.subtract(valorGastos));
+                                    fundoCaixaDao.inserir(fundoCaixa);
                                 }
 
                             }else {
 
-                                if (fundoCaixa.getValorFundo() != null){
+                                if (fundoCaixa.getValorFundo() == null){
                                     formaPagamento = new FormasDePagamentoDAO(HomeActivity.this).getCategoriaOutros();
                                     categoriaGasto = new CategoriaGastosDAO(HomeActivity.this).getCategoriaOutros();
                                     gasto.setValor(valorGastos.subtract(valorGanhos));
@@ -413,6 +422,10 @@ public class HomeActivity extends FragmentActivity {
                                     gasto.setCategoria((int)categoriaGasto.getId());
                                     gasto.setFormaPagamento((int) formaPagamento.getId());
                                     gastosDAO.inserir(gasto);
+
+                                    fundoCaixa.setDataIclusao(gc.getTime());
+                                    fundoCaixa.setValorFundo(valorGanhos.subtract(valorGastos));
+                                    fundoCaixaDao.inserir(fundoCaixa);
                                 }
 
                             }
