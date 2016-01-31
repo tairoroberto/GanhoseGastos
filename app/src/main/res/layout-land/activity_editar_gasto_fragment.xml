@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <!-- Action-bar looking view -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_dimen"
+        android:background="@color/dark_gray"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|right">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/btnDeletarGastosEditar"
+                android:background="@drawable/botao_tranparente">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/botao_tranparente"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/ic_action_discard"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="DELETAR"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/light_gray"
+                    android:paddingLeft="2dp"
+                    android:layout_marginRight="10dp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/light_gray"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/btnSalvarGastosEditar"
+                android:background="@drawable/botao_tranparente">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/botao_tranparente"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_action_accept"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="SALVAR"
+                    android:gravity="start|center"
+                    android:textColor="@color/light_gray"
+                    android:src="@mipmap/ic_action_accept"
+                    android:paddingLeft="10dp"/>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </FrameLayout>
+
+    <!-- Content -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:text="R$0,00"
+                    android:id="@+id/txtValorGastoEditar"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:gravity="center_horizontal" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/dark_gray"
+                    android:layout_alignBottom="@id/txtValorGastoEditar"
+                    android:id="@+id/view5" />
+
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/listaCategoriasEditar"
+                    android:layout_gravity="center_horizontal"
+                    android:choiceMode="singleChoice"
+                    android:layout_below="@+id/txtValorGastoEditar"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignBottom="@+id/edtComentarioGastoEditar"
+                    android:layout_alignRight="@+id/txtValorGastoEditar"
+                    android:layout_alignEnd="@+id/txtValorGastoEditar"
+                    android:layout_marginRight="2dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detalhes"
+                    android:textSize="20sp"
+                    android:id="@+id/textView3"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingTop="10dp"
+                    android:layout_above="@+id/view5"
+                    android:layout_toRightOf="@+id/txtValorGastoEditar"
+                    android:layout_toEndOf="@+id/txtValorGastoEditar" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/edtComentarioGastoEditar"
+                    android:inputType="text"
+                    android:layout_alignParentBottom="true"
+                    android:layout_toRightOf="@+id/listaCategoriasEditar"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vencimento"
+                    android:background="@drawable/botao_tranparente"
+                    android:id="@+id/btnDataVencimentoGastoEditar"
+                    android:gravity="center|start"
+                    android:layout_above="@+id/checkDataPagamentoGastoEditar"
+                    android:layout_alignRight="@+id/btnFormaPagamentoEditar"
+                    android:layout_alignEnd="@+id/btnFormaPagamentoEditar" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Descrição"
+                    android:id="@+id/textView5"
+                    android:layout_alignBottom="@+id/btnFormaPagamentoEditar"
+                    android:layout_toRightOf="@+id/listaCategoriasEditar"
+                    android:layout_toEndOf="@+id/listaCategoriasEditar" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Forma de pagamento"
+                    android:background="@drawable/botao_tranparente"
+                    android:id="@+id/btnFormaPagamentoEditar"
+                    android:gravity="center|right"
+                    android:layout_above="@+id/edtComentarioGastoEditar"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/checkDataPagamentoGastoEditar"
+                    android:checked="false"
+                    android:text="Data de pagamento"
+                    android:layout_above="@+id/btnFormaPagamentoEditar"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+</LinearLayout>

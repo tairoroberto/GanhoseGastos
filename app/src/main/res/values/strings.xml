@@ -1,0 +1,117 @@
+<resources>
+    <string name="app_name">Ganhos \u0026 Gastos</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_add_dados_mes_anterior">Add dados do mês anterior</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="content_hint">Content</string>
+    <string name="drawer_hint">Drawer</string>
+
+
+    <string-array name="array_opcoes">
+        <item>Início</item>
+        <item>Ver gráficos</item>
+        <item>Categorias de ganhos</item>
+        <item>Categorias de gastos</item>
+        <item>Formas de pagamento</item>
+        <item>Back-up</item>
+    </string-array>
+
+    <string-array name="array_backup">
+        <item>Fazer backup</item>
+        <item>Restaurar backup</item>
+    </string-array>
+
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_ganhos">Adicionar Ganhos</string>
+    <string name="title_activity_gastos">Adicionar Gastos</string>
+    <string name="title_activity_categoria_gastos">Adicionar Categoria de Gastos</string>
+    <string name="title_activity_categoria_ganhos">Adicionar Categoria de Ganhos</string>
+    <string name="title_activity_historico_ganhos_mes">Histórico de Ganhos do Mês</string>
+    <string name="title_activity_historico_gastos_mes">Histórico de Gastos do Mês</string>
+    <string name="title_activity_grafico_gastos">Graficos</string>
+    <string name="title_activity_backup">Backup</string>
+    <string name="title_activity_teste">TesteActivity</string>
+    <string name="title_activity_formas_de_pagamento">Adicionar Forma De Pagamento</string>
+    <string name="title_activity_editar_gasto">Editar Gasto</string>
+    <string name="title_activity_editar_ganho">Editar Ganho</string>
+    <string name="title_activity_lista_categoria_gasto">Categorias de Gastos </string>
+    <string name="title_activity_lista_categoria_ganho">Categorias de Ganhos</string>
+    <string name="title_activity_editar_gategoria_gasto">Editar Gategoria de Gasto</string>
+    <string name="title_activity_editar_gategoria_ganho">Editar Gategoria de Ganho</string>
+    <string name="title_activity_lista_forma_pagamento">Formas de Pagamento</string>
+    <string name="title_activity_editar_forma_pagamento">Editar Forma de Pagamento</string>
+    <string name="title_activity_grafico_ganhos">Ganhos do mês</string>
+    <string name="title_activity_grafico_gasto">Gasto do mês</string>
+    <string name="title_activity_grafico_categoria_gasto">Grafico Categoria</string>
+    <string name="title_activity_grafico_formas_pagamento">Grafico Formas de Pagamento</string>
+    <string name="title_activity_grafico_anual">Grafico Anual</string>
+    <string name="title_activity_historico_forma_pagamneto">Historico Forma de Pagamento</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Strings related to Settings -->
+
+    <!-- Example General settings -->
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+    <string-array name="pref_example_list_titles">
+        <item>Always</item>
+        <item>When possible</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_example_list_values">
+        <item>1</item>
+        <item>0</item>
+        <item>-1</item>
+    </string-array>
+
+    <!-- Example settings for Data & Sync -->
+    <string name="pref_header_data_sync">Data &amp; sync</string>
+
+    <string name="pref_title_sync_frequency">Sync frequency</string>
+    <string-array name="pref_sync_frequency_titles">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>3 hours</item>
+        <item>6 hours</item>
+        <item>Never</item>
+    </string-array>
+    <string-array name="pref_sync_frequency_values">
+        <item>15</item>
+        <item>30</item>
+        <item>60</item>
+        <item>180</item>
+        <item>360</item>
+        <item>-1</item>
+    </string-array>
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_title_new_message_notifications">New message notifications</string>
+
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_ringtone_silent">Silent</string>
+
+    <string name="pref_title_vibrate">Vibrate</string>
+
+
+</resources>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Placeholder for the front view, to be set if no one is provided. The
+front view represents the "not checked" state.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/frameFront"
+    android:layout_height="match_parent"
+    android:background="@color/fcb__front_color"
+    android:orientation="vertical" >
+
+</FrameLayout><!-- From: file:/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/src/main/res/layout/simple_card_front.xml --><!-- From: file:/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/bundles/debug/res/layout/simple_card_front.xml -->

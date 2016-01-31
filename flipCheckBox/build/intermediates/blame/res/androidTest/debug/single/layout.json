@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/res/merged/androidTest/debug/layout/simple_card_front.xml",
+        "source": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/bundles/debug/res/layout/simple_card_front.xml"
+    },
+    {
+        "merged": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/res/merged/androidTest/debug/layout/simple_card_back.xml",
+        "source": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/bundles/debug/res/layout/simple_card_back.xml"
+    },
+    {
+        "merged": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/res/merged/androidTest/debug/layout/flipcheckbox_view.xml",
+        "source": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/bundles/debug/res/layout/flipcheckbox_view.xml"
+    }
+]

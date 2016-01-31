@@ -1,0 +1,153 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="br.com.trmasolucoes.ganhosegastos.CategoriaGastosActivity">
+
+    <!-- Action-bar looking view -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_dimen"
+        android:background="@color/dark_gray"
+        android:id="@+id/frameLayout">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|right">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/botao_tranparente"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:src="@mipmap/ic_action_discard"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="DELETAR"
+                    android:gravity="start|center"
+                    android:textColor="@color/light_gray"
+                    android:id="@+id/btnDeletarCategoriaGanhosEditar"
+                    android:background="@drawable/botao_tranparente"
+                    android:paddingLeft="2dp"
+                    android:layout_marginRight="10dp" />
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="30dp"
+                android:background="@color/light_gray"
+                android:layout_gravity="center_vertical"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/botao_tranparente"
+                    android:layout_gravity="center_vertical"/>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:src="@mipmap/ic_action_accept"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="SALVAR"
+                    android:gravity="start|center"
+                    android:textColor="@color/light_gray"
+                    android:id="@+id/btnSalvarCategoriaGanhoEditar"
+                    android:src="@mipmap/ic_action_accept"
+                    android:background="@drawable/botao_tranparente"
+
+                    android:paddingLeft="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/frameLayout"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Nome"
+                android:layout_weight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_gravity="bottom" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edtNomeCategoriaGanhoEditar"
+                android:layout_weight="2"
+                android:layout_marginRight="16dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Cor"
+                android:id="@+id/textView"
+                android:layout_weight="1"
+                android:layout_marginLeft="16dp"
+                android:layout_gravity="center_vertical" />
+
+            <Spinner
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/spinnerCorCategoriaGanhoEditar"
+                android:layout_weight="2"
+                android:hint="Cor"
+                android:layout_marginRight="16dp"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

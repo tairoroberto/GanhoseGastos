@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/res/merged/androidTest/debug/anim/shrink_to_middle.xml",
+        "source": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/bundles/debug/res/anim/shrink_to_middle.xml"
+    },
+    {
+        "merged": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/res/merged/androidTest/debug/anim/grow_from_middle.xml",
+        "source": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/bundles/debug/res/anim/grow_from_middle.xml"
+    },
+    {
+        "merged": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/res/merged/androidTest/debug/anim/scale.xml",
+        "source": "/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/bundles/debug/res/anim/scale.xml"
+    }
+]

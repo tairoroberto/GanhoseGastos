@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/home/tairo/workspace_AndroidStudio/GanhoseGastos/flipCheckBox/build/intermediates/bundles/debug/res/values/values.xml -->
+    <eat-comment/>
+    <color name="fcb__front_color">#ffff0000</color>
+    <declare-styleable name="FlipCheckBox"><attr format="boolean" name="checked"/><attr format="boolean" name="showAnimations"/><attr format="reference" name="inAnimation"/><attr format="reference" name="outAnimation"/><attr format="integer" name="flipAnimationDuration"/><attr format="reference" name="frontLayout"/><attr format="reference" name="rearColor"/><attr format="reference" name="rearAcceptImage"/><attr format="boolean" name="showAcceptImage"/></declare-styleable>
+    <dimen name="fcb__rear_accept_image_padding">16dp</dimen>
+    <drawable name="fcb__rear_color">#ff99cc00</drawable>
+</resources>

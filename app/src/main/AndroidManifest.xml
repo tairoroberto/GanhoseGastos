@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.trmasolucoes.ganhosegastos">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".ApplicationClass"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/title_activity_home" />
+        <activity
+            android:name=".GanhosActivity"
+            android:label="@string/title_activity_ganhos"></activity>
+        <activity
+            android:name=".GastosActivity"
+            android:label="@string/title_activity_gastos"></activity>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
+        <activity
+            android:name=".CategoriaGastosActivity"
+            android:label="@string/title_activity_categoria_gastos"></activity>
+        <activity
+            android:name=".CategoriaGanhosActivity"
+            android:label="@string/title_activity_categoria_ganhos"></activity>
+        <activity
+            android:name=".HistoricoGanhosMesActivity"
+            android:label="@string/title_activity_historico_ganhos_mes"
+            android:parentActivityName=".graficos.GraficoGanhosActivity"></activity>
+        <activity
+            android:name=".HistoricoGanhosMesHomeActivity"
+            android:label="@string/title_activity_historico_ganhos_mes"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity
+            android:name=".HistoricoGastosMesActivity"
+            android:label="@string/title_activity_historico_gastos_mes"
+            android:parentActivityName=".graficos.GraficoGastoActivity"></activity>
+        <activity
+            android:name=".HistoricoGastosMesHomeActivity"
+            android:label="@string/title_activity_historico_gastos_mes"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity
+            android:name=".GraficosListaActivity"
+            android:label="@string/title_activity_grafico_gastos"></activity>
+        <activity
+            android:name=".BackupActivity"
+            android:label="@string/title_activity_backup"></activity>
+        <activity
+            android:name=".FormasDePagamentoActivity"
+            android:label="@string/title_activity_formas_de_pagamento"></activity>
+        <activity
+            android:name=".editar.EditarGastoActivity"
+            android:label="@string/title_activity_editar_gasto"></activity>
+        <activity
+            android:name=".editar.EditarGanhoActivity"
+            android:label="@string/title_activity_editar_ganho"></activity>
+        <activity
+            android:name=".ListaCategoriaGastoActivity"
+            android:label="@string/title_activity_lista_categoria_gasto"></activity>
+        <activity
+            android:name=".ListaCategoriaGanhoActivity"
+            android:label="@string/title_activity_lista_categoria_ganho"></activity>
+        <activity
+            android:name=".editar.EditarGategoriaGastoActivity"
+            android:label="@string/title_activity_editar_gategoria_gasto"></activity>
+        <activity
+            android:name=".editar.EditarGategoriaGanhoActivity"
+            android:label="@string/title_activity_editar_gategoria_ganho"></activity>
+        <activity
+            android:name=".ListaFormaPagamentoActivity"
+            android:label="@string/title_activity_lista_forma_pagamento"></activity>
+        <activity
+            android:name=".editar.EditarFormaPagamentoActivity"
+            android:label="@string/title_activity_editar_forma_pagamento"></activity>
+        <activity
+            android:name=".editar.EditarGastoFragmentActivity"
+            android:label="@string/title_activity_editar_gasto"></activity>
+        <activity android:name=".PieChartActivity" />
+        <activity
+            android:name=".graficos.GraficoGanhosActivity"
+            android:label="@string/title_activity_grafico_ganhos"
+            android:parentActivityName=".GraficosListaActivity"></activity>
+        <activity
+            android:name=".graficos.GraficoGastoActivity"
+            android:label="@string/title_activity_grafico_gasto"
+            android:parentActivityName=".GraficosListaActivity"></activity>
+        <activity
+            android:name=".graficos.GraficoFormasPagamentoActivity"
+            android:label="@string/title_activity_grafico_formas_pagamento"
+            android:parentActivityName=".GraficosListaActivity"></activity>
+        <activity
+            android:name=".graficos.GraficoAnualActivity"
+            android:label="@string/title_activity_grafico_anual"
+            android:parentActivityName=".GraficosListaActivity"></activity>
+        <activity
+            android:name=".HistoricoGastosMesFormaPagamentoActivity"
+            android:label="@string/title_activity_historico_forma_pagamneto"
+            android:parentActivityName=".graficos.GraficoFormasPagamentoActivity"></activity>
+    </application>
+
+</manifest>

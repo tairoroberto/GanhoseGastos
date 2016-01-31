@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.franlopez.flipcheckbox"
+    android:versionCode="0005"
+    android:versionName="0.5-SNAPSHOT" >
+
+    <uses-sdk
+        android:minSdkVersion="4"
+        android:targetSdkVersion="19" />
+
+</manifest>
