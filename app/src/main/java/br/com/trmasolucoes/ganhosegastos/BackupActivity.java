@@ -6,7 +6,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
+import android.graphics.Path;
 import android.net.Uri;
+import android.os.Environment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -21,6 +23,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.net.URISyntaxException;
 
 import br.com.trmasolucoes.ganhosegastos.adapters.ListaOpcoesAdapter;
@@ -144,6 +154,7 @@ public class BackupActivity extends ActionBarActivity {
                     builder.setMessage("Deseja enviar o backup por e-mail")
                             .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
+                                    exportDB();
                                     showFileEmailChooser();
                                 }
                             })
@@ -207,6 +218,13 @@ public class BackupActivity extends ActionBarActivity {
                     // Get the file instance
                     // File file = new File(path);
                     // Initiate the upload
+
+                    if (path != null && path.contains(".GG")){
+                        importDB(path);
+                    }else {
+                        Toast.makeText(BackupActivity.this,"Arquivo inválido", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 break;
 
@@ -257,10 +275,15 @@ public class BackupActivity extends ActionBarActivity {
 
             try {
                 cursor = context.getContentResolver().query(uri, projection, null, null, null);
-                int column_index = cursor.getColumnIndexOrThrow("_data");
-                if (cursor.moveToFirst()) {
-                    return cursor.getString(column_index);
+                if (cursor != null){
+                    int column_index = cursor.getColumnIndexOrThrow("_data");
+                    if (cursor.moveToFirst()) {
+                        return cursor.getString(column_index);
+                    }
+
+                    cursor.close();
                 }
+
             } catch (Exception e) {
                 // Eat it
             }
@@ -287,5 +310,71 @@ public class BackupActivity extends ActionBarActivity {
         Uri myUri = Uri.parse("file://" + path);
         emailIntent.putExtra(Intent.EXTRA_STREAM, myUri);
         startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+    }
+
+    public void exportDB(){
+        final String inFileName = "/data/data/br.com.trmasolucoes.ganhosegastos/databases/GanhoseGastos_db";
+        File dbFile = new File(inFileName);
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(dbFile);
+
+            /** Verifica se diretorio existe e cria*/
+            String caminho = Environment.getExternalStorageDirectory()+"/GanhoseGastos/"+DateUtil.getDateToStringShort(DateUtil.getDataHoje());
+            File folder = new File(caminho);
+            if (!folder.exists()) {
+                folder.mkdir();
+            }
+            String outFileName = caminho+"/GanhoseGastos.GG";
+
+            // Open the empty db as the output stream
+            OutputStream output = new FileOutputStream(outFileName);
+
+            // Transfer bytes from the inputfile to the outputfile
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = fis.read(buffer))>0){
+                output.write(buffer, 0, length);
+            }
+
+            // Close the streams
+            output.flush();
+            output.close();
+            fis.close();
+            Toast.makeText(BackupActivity.this,"Backup realizado com sucesso!", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean importDB(String path){
+
+        File dbFile = new File(path);
+        FileInputStream fis = null;
+        try {
+
+            fis = new FileInputStream(dbFile);
+            String outFileName = "/data/data/br.com.trmasolucoes.ganhosegastos/databases/GanhoseGastos_db";
+
+            // Open the empty db as the output stream
+            OutputStream output = new FileOutputStream(outFileName);
+
+            // Transfer bytes from the inputfile to the outputfile
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = fis.read(buffer))>0){
+                output.write(buffer, 0, length);
+            }
+
+            // Close the streams
+            output.flush();
+            output.close();
+            fis.close();
+            Toast.makeText(BackupActivity.this,"Backup restaurado com sucesso!", Toast.LENGTH_SHORT).show();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 }
