@@ -1,21 +1,24 @@
 package br.com.trmasolucoes.ganhosegastos;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
-import android.graphics.Path;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,21 +26,19 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URISyntaxException;
+import java.nio.channels.FileChannel;
 
 import br.com.trmasolucoes.ganhosegastos.adapters.ListaOpcoesAdapter;
 import br.com.trmasolucoes.ganhosegastos.util.DateUtil;
 import br.com.trmasolucoes.ganhosegastos.util.DrawerArrowDrawable;
-
-import static android.view.Gravity.START;
 
 
 public class BackupActivity extends ActionBarActivity {
@@ -50,6 +51,10 @@ public class BackupActivity extends ActionBarActivity {
     private static final int FILE_SELECT_EMAIL_CODE = 1;
     private static final int BACKUP_RECOVER_CODE = 2;
 
+    /** Variavel para verificar a permisão*/
+    private static final int REQUEST_WRITE_CONTACTS_STORAGE_CALENDAR = 112;
+    private boolean exportar = false;
+    private String pathImportacao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,14 +153,30 @@ public class BackupActivity extends ActionBarActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(position == 0){
 
+                    exportar = true;
+
                     AlertDialog.Builder builder = new AlertDialog.Builder(BackupActivity.this);
                     builder.setTitle("Ganhos & Gastos Backup");
 
                     builder.setMessage("Deseja enviar o backup por e-mail")
                             .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    exportDB();
-                                    showFileEmailChooser();
+
+                                    /** Verifica as permissões */
+                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                        if (ContextCompat.checkSelfPermission(BackupActivity.this,
+                                                Manifest.permission.READ_CONTACTS)
+                                                != PackageManager.PERMISSION_GRANTED) {
+
+                                            ActivityCompat.requestPermissions(BackupActivity.this,
+                                                    new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_CALENDAR},
+                                                    REQUEST_WRITE_CONTACTS_STORAGE_CALENDAR);
+                                        }else {
+                                            exportDB();
+                                        }
+                                    }else {
+                                        exportDB();
+                                    }
                                 }
                             })
                             .setNegativeButton("Não", new DialogInterface.OnClickListener() {
@@ -220,11 +241,29 @@ public class BackupActivity extends ActionBarActivity {
                     // Initiate the upload
 
                     if (path != null && path.contains(".GG")){
-                        importDB(path);
+
+                        pathImportacao = path;
+                        exportar = false;
+
+                        /** Verifica as permissões */
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            if (ContextCompat.checkSelfPermission(BackupActivity.this,
+                                    Manifest.permission.READ_CONTACTS)
+                                    != PackageManager.PERMISSION_GRANTED) {
+
+                                ActivityCompat.requestPermissions(BackupActivity.this,
+                                        new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_CALENDAR},
+                                        REQUEST_WRITE_CONTACTS_STORAGE_CALENDAR);
+                            }else {
+                                importDB(path);
+                            }
+                        }else {
+                            importDB(path);
+                        }
+
                     }else {
                         Toast.makeText(BackupActivity.this,"Arquivo inválido", Toast.LENGTH_SHORT).show();
                     }
-
                 }
                 break;
 
@@ -313,37 +352,35 @@ public class BackupActivity extends ActionBarActivity {
     }
 
     public void exportDB(){
-        final String inFileName = "/data/data/br.com.trmasolucoes.ganhosegastos/databases/GanhoseGastos_db";
-        File dbFile = new File(inFileName);
-        FileInputStream fis = null;
         try {
-            fis = new FileInputStream(dbFile);
+            // Caminho de Origem do Seu Banco de Dados
+            InputStream in = new FileInputStream(
+                    new File(Environment.getDataDirectory()
+                            + "/data/br.com.trmasolucoes.ganhosegastos/databases/GanhoseGastos_db"));
 
-            /** Verifica se diretorio existe e cria*/
-            String caminho = Environment.getExternalStorageDirectory()+"/GanhoseGastos/"+DateUtil.getDateToStringShort(DateUtil.getDataHoje());
-            File folder = new File(caminho);
-            if (!folder.exists()) {
-                folder.mkdir();
-            }
-            String outFileName = caminho+"/GanhoseGastos.GG";
+            String path = "/GanhoseGastos/" + DateUtil.getDateToStringShort(DateUtil.getDataHoje());
+            File file = new File(Environment.getExternalStorageDirectory(), path);
 
-            // Open the empty db as the output stream
-            OutputStream output = new FileOutputStream(outFileName);
-
-            // Transfer bytes from the inputfile to the outputfile
-            byte[] buffer = new byte[1024];
-            int length;
-            while ((length = fis.read(buffer))>0){
-                output.write(buffer, 0, length);
+            if (!file.mkdirs()) {
+                Log.e("Script", "Diretorio não criado!");
             }
 
-            // Close the streams
-            output.flush();
-            output.close();
-            fis.close();
+            // Caminho de Destino do Backup do Seu Banco de Dados
+            OutputStream out = new FileOutputStream(new File(
+                    Environment.getExternalStorageDirectory() + path + "/GanhoseGastos.GG"));
+
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            in.close();
+            out.close();
             Toast.makeText(BackupActivity.this,"Backup realizado com sucesso!", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            e.printStackTrace();
+            showFileEmailChooser();
+        }  catch (Exception e) {
+            Toast.makeText(BackupActivity.this, "Backup falhou: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.i("Script","Falha no Backup: " + e.getMessage());
         }
     }
 
@@ -354,7 +391,7 @@ public class BackupActivity extends ActionBarActivity {
         try {
 
             fis = new FileInputStream(dbFile);
-            String outFileName = "/data/data/br.com.trmasolucoes.ganhosegastos/databases/GanhoseGastos_db";
+            String outFileName = Environment.getDataDirectory()+"/data/br.com.trmasolucoes.ganhosegastos/databases/GanhoseGastos_db";
 
             // Open the empty db as the output stream
             OutputStream output = new FileOutputStream(outFileName);
@@ -375,6 +412,27 @@ public class BackupActivity extends ActionBarActivity {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+
+     @Override
+      public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_WRITE_CONTACTS_STORAGE_CALENDAR) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //permission granted  start reading
+
+                /** Verifica se é ŕa exportar ou importar*/
+                if (exportar){
+                    exportDB();
+                }else {
+                    importDB(pathImportacao);
+                }
+
+            } else {
+                Toast.makeText(BackupActivity.this, "SEM PERMISSÃO DE ESCRITA NO SDCARD", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }
