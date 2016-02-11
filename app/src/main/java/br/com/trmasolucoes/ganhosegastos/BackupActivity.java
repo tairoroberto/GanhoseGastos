@@ -240,7 +240,13 @@ public class BackupActivity extends ActionBarActivity {
                     // File file = new File(path);
                     // Initiate the upload
 
-                    if (path != null && path.contains(".GG")){
+
+                    String[] verifyPath = new String[0];
+                    if (path != null) {
+                        verifyPath = path.split("\\.");
+                    }
+
+                    if (path != null && verifyPath[1].equalsIgnoreCase("GG")){
 
                         pathImportacao = path;
                         exportar = false;

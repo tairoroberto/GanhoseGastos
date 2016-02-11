@@ -105,8 +105,8 @@ public class GastosDAO {
         String inicio_mes = DateUtil.getDateToString(DateUtil.getFirstDayMonth(DateUtil.getDataHoje()));
         String fim_mes = DateUtil.getDateToString(DateUtil.getLastDayMonth(DateUtil.getDataHoje()));
 
-        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataVencimento >= '"+ inicio_mes  +"' AND " +
-                "gastos.dataVencimento <= '"+ fim_mes +"' ";
+        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataPagamento >= '"+ inicio_mes  +"' AND " +
+                "gastos.dataPagamento <= '"+ fim_mes +"' ";
         Cursor cursor = db.rawQuery(MY_QUERY, null);
 
         if (cursor.getCount() > 0) {
@@ -138,8 +138,8 @@ public class GastosDAO {
         String inicio_mes = DateUtil.getDateToString(DateUtil.getFirstDayMonth(data));
         String fim_mes = DateUtil.getDateToString(DateUtil.getLastDayMonth(data));
 
-        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataVencimento >= '"+ inicio_mes  +"' AND " +
-                "gastos.dataVencimento <= '"+ fim_mes +"' ";
+        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataPagamento >= '"+ inicio_mes  +"' AND " +
+                "gastos.dataPagamento <= '"+ fim_mes +"' ";
         Cursor cursor = db.rawQuery(MY_QUERY, null);
 
         if (cursor.getCount() > 0) {
@@ -172,8 +172,8 @@ public class GastosDAO {
         String inicio_mes = DateUtil.getDateToString(DateUtil.getFirstDayMonth(DateUtil.getDataHoje()));
         String fim_mes = DateUtil.getDateToString(DateUtil.getLastDayMonth(DateUtil.getDataHoje()));
 
-        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataVencimento >= '"+ inicio_mes  +"' AND " +
-                "gastos.dataVencimento <= '"+ fim_mes +"' AND gastos.categoria = "+ categoria +"";
+        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataPagamento >= '"+ inicio_mes  +"' AND " +
+                "gastos.dataPagamento <= '"+ fim_mes +"' AND gastos.categoria = "+ categoria +"";
         Cursor cursor = db.rawQuery(MY_QUERY, null);
 
         if (cursor.getCount() > 0) {
@@ -205,8 +205,8 @@ public class GastosDAO {
         String inicio_mes = DateUtil.getDateToString(DateUtil.getFirstDayMonth(DateUtil.getDataHoje()));
         String fim_mes = DateUtil.getDateToString(DateUtil.getLastDayMonth(DateUtil.getDataHoje()));
 
-        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataVencimento >= '"+ inicio_mes  +"' AND " +
-                "gastos.dataVencimento <= '"+ fim_mes +"' AND gastos.formaPagamento = "+ formaPagamento +"";
+        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataPagamento >= '"+ inicio_mes  +"' AND " +
+                "gastos.dataPagamento <= '"+ fim_mes +"' AND gastos.formaPagamento = "+ formaPagamento +"";
         Cursor cursor = db.rawQuery(MY_QUERY, null);
 
         if (cursor.getCount() > 0) {
@@ -374,8 +374,8 @@ public class GastosDAO {
         String inicio_mes = DateUtil.getDateToString(DateUtil.getFirstDayMonth(DateUtil.getDataHoje()));
         String fim_mes = DateUtil.getDateToString(DateUtil.getLastDayMonth(DateUtil.getDataHoje()));
 
-        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataVencimento >= '"+ inicio_mes  +"' AND " +
-                "gastos.dataVencimento <= '"+ fim_mes +"' ";
+        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataPagamento >= '"+ inicio_mes  +"' AND " +
+                "gastos.dataPagamento <= '"+ fim_mes +"' ";
         Cursor cursor = db.rawQuery(MY_QUERY, null);
 
         if (cursor.getCount() > 0) {
@@ -399,8 +399,8 @@ public class GastosDAO {
         String inicio_mes = DateUtil.getDateToString(DateUtil.getFirstDayMonth(data));
         String fim_mes = DateUtil.getDateToString(DateUtil.getLastDayMonth(data));
 
-        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataVencimento >= '"+ inicio_mes  +"' AND " +
-                "gastos.dataVencimento <= '"+ fim_mes +"' ";
+        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataPagamento >= '"+ inicio_mes  +"' AND " +
+                "gastos.dataPagamento <= '"+ fim_mes +"' ";
         Cursor cursor = db.rawQuery(MY_QUERY, null);
 
         if (cursor.getCount() > 0) {
@@ -425,8 +425,8 @@ public class GastosDAO {
         String inicio_mes = DateUtil.getDateToString(DateUtil.getFirstDayMonth(DateUtil.getDataHoje()));
         String fim_mes = DateUtil.getDateToString(DateUtil.getLastDayMonth(DateUtil.getDataHoje()));
 
-        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataVencimento >= '"+ inicio_mes  +"' AND " +
-                "gastos.dataVencimento <= '"+ fim_mes +"' AND gastos.categoria = "+ categoria +"";
+        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataPagamento >= '"+ inicio_mes  +"' AND " +
+                "gastos.dataPagamento <= '"+ fim_mes +"' AND gastos.categoria = "+ categoria +"";
         Cursor cursor = db.rawQuery(MY_QUERY, null);
 
         if (cursor.getCount() > 0) {
@@ -451,8 +451,8 @@ public class GastosDAO {
         String inicio_mes = DateUtil.getDateToString(DateUtil.getFirstDayMonth(data));
         String fim_mes = DateUtil.getDateToString(DateUtil.getLastDayMonth(data));
 
-        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataVencimento >= '"+ inicio_mes  +"' AND " +
-                "gastos.dataVencimento <= '"+ fim_mes +"' AND gastos.categoria = "+ categoria +"";
+        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataPagamento >= '"+ inicio_mes  +"' AND " +
+                "gastos.dataPagamento <= '"+ fim_mes +"' AND gastos.categoria = "+ categoria +"";
         Cursor cursor = db.rawQuery(MY_QUERY, null);
 
         if (cursor.getCount() > 0) {
@@ -478,8 +478,8 @@ public class GastosDAO {
         String inicio_mes = DateUtil.getDateToString(DateUtil.getFirstDayMonth(DateUtil.getDataHoje()));
         String fim_mes = DateUtil.getDateToString(DateUtil.getLastDayMonth(DateUtil.getDataHoje()));
 
-        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataVencimento >= '"+ inicio_mes  +"' AND " +
-                "gastos.dataVencimento <= '"+ fim_mes +"' AND gastos.formaPagamento = "+ formaPagamento +"";
+        String MY_QUERY = "SELECT * FROM gastos WHERE gastos.dataPagamento >= '"+ inicio_mes  +"' AND " +
+                "gastos.dataPagamento <= '"+ fim_mes +"' AND gastos.formaPagamento = "+ formaPagamento +"";
         Cursor cursor = db.rawQuery(MY_QUERY, null);
 
         if (cursor.getCount() > 0) {
